@@ -1,23 +1,63 @@
-_Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
- 
- # Yatzy Refactoring Kata
+Yatzy Refactor
+==============
 
-There is a [top code kata video](https://youtu.be/SvcJKNF_nRQ) explaining why you might want to try this refactoring kata. It is also used in my video [Unlock the Power of Refactoring in Everyday OO Design](https://youtu.be/sngRW3zPiiE).
+Overview
+--------
 
-If you like this Kata, you may be interested in [my books](https://leanpub.com/u/emilybache) and website [SammanCoaching.org](https://sammancoaching.org)
+This project involves refactoring the `Yatzy1` class and its corresponding test class `Yatzy1Test`. The refactor aims to improve code readability, reduce redundancy, enhance maintainability, and increase performance.
 
-## Kata Description
+Changes in `Yatzy1` Class
+-------------------------
 
-The problem that this code is designed to solve is explained here: [Yatzy](https://sammancoaching.org/kata_descriptions/yatzy.html)
+### Generalized `scoreForValue` Method
 
-## Contributing to this Kata
-Please do not send me your refactored solutions. I am however grateful for language translations and updates to dependencies.
+- Created a single method for scoring any dice value to reduce redundancy.
+- Replaced individual methods (`ones`, `twos`, `threes`) with a single method to handle any face value.
 
-I recently added new refactoring challenges to the Java version and I would appreciate translations of Yatzy2 in other languages. Yatzy3 is still under development as an exercise so hold off on translating that one for the moment.
+### Stream API
 
-## Code Reading Practice
-Test your code reading skills. Here is a description of what to do: [Scanning for Code Smells](https://sammancoaching.org/exercises/code_reading.html). There are suitable lists of urls to open in some of the language subdirectories.
+- Utilized the Stream API to sum values and count occurrences for better readability and performance.
+- Replaced manual loops with stream operations.
 
-# Acknowlegements
+### Helper Method `countDice`
 
-The original exercise was designed by Jon Jagger and is available in his Cyber-Dojo. See [his blog post](http://jonjagger.blogspot.co.uk/2012/05/yahtzee-cyber-dojo-refactoring-in-java.html). I have changed it a little, so that the rules more closely match what I'm used to.
+- Extracted the dice counting logic into a helper method to avoid repetition.
+- Centralized the logic for counting occurrences of each dice face in the `countDice` method.
+
+### Consistent Naming
+
+- Ensured consistent method and variable naming for clarity and better understanding.
+- Adopted a unified naming convention across the class.
+
+### Simplified Logic
+
+- Simplified the logic for scoring methods such as pair, two pairs, three of a kind, four of a kind, small straight, large straight, and full house.
+- Reduced complex conditions and loops into more straightforward and understandable code.
+
+Changes in `Yatzy1Test` Class
+-----------------------------
+
+### Utilized `@BeforeEach`
+
+- Used the `@BeforeEach` annotation to initialize common objects or variables.
+- Reduced redundancy by setting up common test fixtures.
+
+### Parameterized Tests
+
+- Utilized parameterized tests for methods with similar patterns to reduce redundancy and improve readability.
+- Grouped similar assertions logically using parameterized tests.
+
+### Descriptive Assertion Messages
+
+- Added descriptive messages to assertions to make the purpose and expected outcome clear.
+- Improved readability and maintainability by providing context for each assertion.
+
+### Grouped Assertions
+
+- Grouped similar assertions logically to improve test readability and maintainability.
+- Reduced redundancy by combining similar test cases into parameterized tests.
+
+Summary
+-------
+
+The refactoring of the `Yatzy1` class and `Yatzy1Test` class focuses on improving code quality by reducing redundancy, enhancing readability, and ensuring maintainability. The use of modern Java features such as the Stream API and parameterized tests in JUnit helps achieve these goals, making the codebase more efficient and easier to understand.
